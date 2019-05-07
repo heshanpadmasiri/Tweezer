@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!-- <link rel="stylesheet" type="text/css" href="animation.css"> -->
+    <title>Tweet Visualizer</title>
+
+    <style type="text/css">
+    	
+    	.logo{
+
+		 	height: 50px;
+		 	padding-right: 15px;
+		 	padding-left: 5px;
+ 		}
+
+ 		body{
+		  background-image: url('/static/emotion.jpg');
+		  height: 100%; 
+
+		  /* Center and scale the image nicely */
+		  background-position: center;
+		  background-repeat: no-repeat;
+		  background-size: cover;
+		  background-position: top 90px;
+		}
+
+		#keywords{
+			width: 200%;
+
+		}	
+
+    </style>
+  </head>
+  <body >
+  	<nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+  		<a class="navbar-brand" href="#">
+  			<img class="img-responsive logo" src="{{url_for('static', filename='logo.jpg')}}" /></a>
+  		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    		<span class="navbar-toggler-icon"></span>
+  		</button>
+
+  		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+    		<ul class="navbar-nav mr-auto">
+      			<li class="nav-item ">
+        			<a class="nav-link" href="{{ url_for('tweets') }}">Tweets</a>
+      			</li>
+      			<li class="nav-item">
+       				 <a class="nav-link" href="{{ url_for('worldmap') }}">Map</a>
+     			</li>
+      			
+      			<li class="nav-item">
+        			<a class="nav-link " href="{{ url_for('timeline') }}">Timeline</a>
+      			</li>
+
+      			<li class="nav-item">
+        			<a class="nav-link " href="{{ url_for('piechart') }}" >Pie Chart</a>
+      			</li>
+    		</ul>
+    
+  		</div>
+	</nav>
+
+  	<div class="container">
+  		<div class="jumbotron m-5">
+		  <h1  class="display-2 text-center text-primary font-weight-bold ">Tweezer</h1>
+		  <p class="lead font-weight-bold">Welcome to Tweezer!</p>
+		  <hr class="my-4">
+		  <p class="text-info">Type a keyword into the input field, then click the search button. Recent tweets that contain your keyword are pulled from Twitter and visualized in the tabs</p>
+		 
+
+		<div class="input-group mb-3">
+
+	  		<!-- form to get the keyword -->
+
+	  		<form action="" method='POST'>
+                <div class="form-group">
+                    <label for="key">Keyword:</label>
+                       	<input type="text" id="keyword" class="form-control" placeholder="keyword" name="keyword">
+
+                </div>
+                <button type="submit" class="btn btn-primary btn-sm">Search</button>
+            </form>
+		</div>
+	</div>
+  		
+	
+
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+
+    
+
+  </body>
+</html>

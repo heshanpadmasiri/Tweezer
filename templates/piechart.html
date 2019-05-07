@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>Pie chart</title>
+
+    <style type="text/css">
+    	
+    	body{
+			background-color: skyblue;
+		}
+
+
+		#container {
+		  min-width: 310px;
+		  max-width: 800px;
+		  height: 600px;
+		  margin: 0 auto
+
+		}
+
+    </style>
+  </head>
+<body>
+
+	<h2 class="display-4 text-center text-dark ">Pie Chart</h2>
+
+	<div id="container" style="min-width: 310px; height: 600px; max-width: 600px; margin: 0 auto"></div>
+
+	
+
+
+
+
+	 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <!--  highchart library scripts -->
+
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+	<script src="https://code.highcharts.com/modules/exporting.js"></script>
+	<script src="https://code.highcharts.com/modules/export-data.js"></script>
+
+
+
+
+</body>
+
+<script>
+
+		//getting percentages for the pie chart
+
+		var counts = {{ percentage_list|tojson }};
+
+		
+		var arrayLength = counts.length;
+		
+		for ( var i = 0; i < arrayLength; i++){
+			
+			if (counts[i][0] == "Anger") {
+				var anger =counts[i][1];
+			}
+
+			else if (counts[i][0] == "Disgust"){
+				var disgust =counts[i][1];
+			}
+
+			else if (counts[i][0] == "Fear"){
+				var fear =counts[i][1];
+			}
+
+			else if (counts[i][0] == "Joy"){
+				var joy =counts[i][1];
+			}
+
+			else if (counts[i][0] == "Sadness"){
+				var sadness =counts[i][1];
+			}
+
+			else {
+				var surprise =counts[i][1];
+			}
+
+		}
+
+		// piechart
+		
+		Highcharts.chart('container', {
+		  chart: {
+		    plotBackgroundColor: null,
+		    plotBorderWidth: null,
+		    plotShadow: false,
+		    type: 'pie'
+		  },
+		  title: {
+		    text: 'Emotion Percentages'
+		  },
+		  tooltip: {
+		    pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+		  },
+		  plotOptions: {
+		    pie: {
+		      allowPointSelect: true,
+		      cursor: 'pointer',
+		      dataLabels: {
+		        enabled: true,
+		        format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+		        style: {
+		          color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+		        }
+		      }
+		    }
+		  },
+		  series: [{
+		    name: 'percentage',
+		    colorByPoint: true,
+		    data: [{
+		      name: 'Anger',
+		      y: anger
+		    }, {
+		      name: 'Fear',
+		      y: fear
+		    }, {
+		      name: 'Joy',
+		      y: joy
+		    }, {
+		      name: 'Disgust',
+		      y: disgust
+		    }, {
+		      name: 'Sadness',
+		      y: sadness
+		    }, {
+		      name: 'Surprise',
+		      y: surprise
+		    }]
+		  }]
+		});
+</script>
+</html>

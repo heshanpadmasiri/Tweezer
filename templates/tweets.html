@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!-- <link rel="stylesheet" type="text/css" href="animation.css"> -->
+
+    <title>Tweets</title>
+
+    <style>
+		body{
+			background-color: skyblue;
+		}
+
+		/*table style*/
+		
+		#tweets {
+		  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+		  border-collapse: collapse;
+		  width: 97%;
+		  margin: 50px 20px;
+		}
+
+		#tweets td, #tweets th {
+		  border: 1px solid #ddd;
+		  padding: 8px;
+		}
+
+		#tweets tr:nth-child(even){background-color: #f2f2f2;}
+
+		#tweets tr:hover {background-color: #ddd;}
+
+		#tweets th {
+		  padding-top: 12px;
+		  padding-bottom: 12px;
+		  text-align: left;
+		  background-color: #6493ea;
+		  color: white;
+		}
+
+		h1{
+			margin-top: 20px;
+		}
+
+		.my-custom-scrollbar {
+			  position: relative;
+			  height: 500px;
+			  overflow: auto;
+		}
+		.table-wrapper-scroll-y {
+  				display: block;
+		}
+	</style>
+  </head>
+<body>
+
+	<h1  class="display-4 text-center text-dark ">TWEETS</h1>
+	
+	<div class="table-wrapper-scroll-y my-custom-scrollbar">
+		<table id="tweets">
+			
+			<tr >
+				
+				<th>Date</th>
+				<th>Tweet</th>
+				<th>Emotion</th>
+				
+			</tr>
+
+			<!-- adding data to the table -->
+
+			{% for row in resultValue %}
+			<tr>
+			    
+			    <td>{{row[0]}}</td>
+			   	<td>{{row[1]}}</td>
+			   	<td>{{row[2]}}</td>
+	  		</tr>
+	  		{% endfor %}
+
+		</table>
+	</div>
+
+
+
+
+	 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+</body>
+</html>
