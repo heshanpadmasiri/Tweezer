@@ -25,7 +25,7 @@ class DB:
 #Create the DB connection 
 db = DB()
 
-#calulating percentages for each emotion
+#calulating percentages for each emotions
 
 def percentage():
     global db
