@@ -49,4 +49,7 @@ COPY . /usr/src/app
 
 EXPOSE 8080
 
+RUN adduser myuser
+USER myuser 
+
 CMD ["python3.6", "application.py"]
