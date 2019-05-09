@@ -14,7 +14,7 @@ class DB:
         self.database = 'twitter_db' 
         self.username = 'thilakshi' 
         self.password = 'tikiz<3kav' 
-        self.cnxn = pyodbc.connect('Driver={ODBC Driver 17 for SQL Server};Server=tcp:twitter-server.database.windows.net,1433;Database=twitter_db;Uid=thilakshi@twitter-server;Pwd=tikiz<3kav;Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;')
+        self.cnxn = pyodbc.connect('Driver={ODBC Driver 13 for SQL Server};Server=tcp:twitter-server.database.windows.net,1433;Database=twitter_db;Uid=thilakshi@twitter-server;Pwd=tikiz<3kav;Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;')
         self.cursor = self.cnxn.cursor()
 
     def getConnection(self):
