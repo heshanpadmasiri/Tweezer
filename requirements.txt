@@ -2,7 +2,6 @@ Flask
 flask_cors
 pyodbc
 tweepy
-html
 keras==1.1.0
 h5py==2.9.0
 Theano==0.8.2

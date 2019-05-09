@@ -1,4 +1,15 @@
-FROM floydhub/dl-docker:cpu
+FROM ubuntu:16.04
+
+RUN apt-get update && \
+        apt-get install -y software-properties-common && \
+        add-apt-repository ppa:jonathonf/python-3.6
+RUN apt-get update -y
+
+RUN apt-get install -y build-essential python3.6 python3.6-dev python3-pip python3.6-venv
+
+# update pip
+RUN python3.6 -m pip install pip --upgrade && \
+        python3.6 -m pip install wheel
 
 ENV PORT 8080
 ENV HOST 0.0.0.0
@@ -10,7 +21,7 @@ RUN apt-get update && apt-get install -y \
 
 # adding custom MS repository
 RUN curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add -
-RUN curl https://packages.microsoft.com/config/ubuntu/14.04/prod.list > /etc/apt/sources.list.d/mssql-release.list
+RUN curl https://packages.microsoft.com/config/ubuntu/16.04/prod.list > /etc/apt/sources.list.d/mssql-release.list
 
 # install SQL Server drivers
 RUN apt-get update && ACCEPT_EULA=Y apt-get install -y msodbcsql unixodbc-dev
@@ -19,10 +30,6 @@ RUN apt-get update && ACCEPT_EULA=Y apt-get install -y msodbcsql unixodbc-dev
 RUN apt-get update && ACCEPT_EULA=Y apt-get install -y mssql-tools
 RUN echo 'export PATH="$PATH:/opt/mssql-tools/bin"' >> ~/.bashrc
 RUN /bin/bash -c "source ~/.bashrc"
-
-RUN pip install --upgrade pip
-
-RUN apt-get remove -y python-chardet python-numpy python-scipy
 
 RUN apt-get install -y unixodbc unixodbc-dev
 
@@ -40,8 +47,6 @@ WORKDIR /usr/src/app
 
 COPY . /usr/src/app
 
-
-
 EXPOSE 8080
 
-CMD ["python", "application.py"]
+CMD ["python3.6", "application.py"]
