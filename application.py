@@ -4,6 +4,7 @@ from flask_cors import CORS, cross_origin
 from piechart import percentage
 from timeline import createTimeline
 from worldmap import createMap
+from streamnew import streaming
 import os
 
 #creating the database connection
@@ -39,9 +40,7 @@ CORS(app)
 def home():
     global db
     
-    if request.method == 'POST':
-        
-        from streamnew import streaming
+    if request.method == 'POST':        
         
         #fetch form data
         keyword = request.form['keyword']
