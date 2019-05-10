@@ -1,7 +1,6 @@
 from flask import Flask , render_template , url_for, request
 import pyodbc
 from flask_cors import CORS, cross_origin
-from streamnew import streaming
 from piechart import percentage
 from timeline import createTimeline
 from worldmap import createMap
@@ -41,6 +40,8 @@ def home():
     global db
     
     if request.method == 'POST':
+        
+        from streamnew import streaming
         
         #fetch form data
         keyword = request.form['keyword']

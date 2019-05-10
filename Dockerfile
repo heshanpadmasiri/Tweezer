@@ -45,10 +45,6 @@ COPY . /usr/src/app
 
 ENV PORT 80
 ENV HOST 0.0.0.0
-
 EXPOSE 80
-
-RUN adduser myuser
-USER myuser 
 
 CMD ["python3.6", "application.py"]
