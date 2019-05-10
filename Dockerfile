@@ -11,10 +11,6 @@ RUN apt-get install -y build-essential python3.6 python3.6-dev python3-pip pytho
 RUN python3.6 -m pip install pip --upgrade && \
         python3.6 -m pip install wheel
 
-ENV PORT 8000
-ENV HOST 0.0.0.0
-
-
 RUN apt-get update && apt-get install -y \
     curl apt-utils apt-transport-https debconf-utils gcc build-essential g++\
     && rm -rf /var/lib/apt/lists/*
@@ -47,7 +43,10 @@ WORKDIR /usr/src/app
 
 COPY . /usr/src/app
 
-EXPOSE 8000
+ENV PORT 80
+ENV HOST 0.0.0.0
+
+EXPOSE 80
 
 RUN adduser myuser
 USER myuser 
